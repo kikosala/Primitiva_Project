@@ -1,5 +1,7 @@
 import libs.Bombo;
 
+import java.util.Arrays;
+
 public class Boleto {
     private static final int lengthCombinacion = 6;
     private static final int MIN_BOLA_GRANDE = 1, MIN_BOLA_PEQUENYO = 0;
@@ -42,5 +44,14 @@ public class Boleto {
 
     public int getReintegro() {
         return reintegro;
+    }
+
+    @Override
+    public String toString() {
+        return "Boleto{" +
+                "combinacion=" + Arrays.toString(combinacion) +
+                ", complementario=" + complementario +
+                ", reintegro=" + reintegro +
+                '}';
     }
 }
