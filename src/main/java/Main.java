@@ -11,7 +11,7 @@ public class Main {
     public Main() {
 
         //DECLARACIÓN DE VARIABLES
-        String combinacionUsuario = "";
+        Boleto boletoUsuario = null;
         int option = 0;
 
         //IMPRIMIMOS EL PROGRAMA
@@ -31,13 +31,13 @@ public class Main {
                     break;
                 case 1:
                     System.out.println("\n>Has elegido MANUALMENTE.");
-                    combinacionUsuario = combinacionManual();
-                    System.out.println("\n>Su combinacion es: " + combinacionUsuario);
+                    boletoUsuario = combinacionManual();
+                    System.out.println("\n>Su combinacion es: " + boletoUsuario);
                     break;
                 case 2:
                     System.out.println("\n>Has elegido ALEATORIAMENTE:");
-                    combinacionUsuario = primitiva.getCombinacionGanadora();
-                    System.out.println("\n>Su combinacion es: " + combinacionUsuario);
+                    boletoUsuario = new Boleto();
+                    System.out.println("\n>Su combinacion es: " + boletoUsuario);
                     break;
                 case 0:
                     System.out.println("\n¡Hasta la proxima!");
@@ -64,19 +64,23 @@ public class Main {
                     break;
                 case 1:
                     System.out.println("\n>Has elegido JUEGO UNICO.");
-                    primitiva.
+                    System.out.println(primitiva.jugar(boletoUsuario));
                     break;
                 case 2:
                     System.out.println("\n>Has elegido JUGAR HASTA OBTENER PREMIO:");
+                    System.out.println(primitiva.jugarHastaPremio());
                     break;
                 case 3:
                     System.out.println("\n>Has elegido JUGAR HASTA OBTENER PREMIO (SIN REINTEGRO):");
+                    primitiva.jugarHastaPremioSinReintegro();
                     break;
                 case 4:
                     System.out.println("\n>Has elegido CICLO DE 10000 SORTEOS:");
+                    primitiva.cicloDe10000Sorteos();
                     break;
                 case 5:
                     System.out.println("\n>Has elegido JUGAR HASTA OBTENER PREMIO CATEGORIA ESPECIAL:");
+                    primitiva.jugarHastaCategoriaEspecial();
                     break;
                 case 0:
                     System.out.println("\n¡Hasta la proxima!");
@@ -92,16 +96,27 @@ public class Main {
      * Devuelve una combinacion elegida por el usuario.
      * @return
      */
-    public static String combinacionManual() {
+    public static Boleto combinacionManual() {
 
-        String combinacionUsuario = "";
+        Boleto boleto = null;
 
-        for (int i = 0; i < 6; i++) {
+        int[] combi = new int[boleto.getCombinacion().length];
+        int numUser, complementario, reintegro;
 
-            combinacionUsuario += String.valueOf(Readers.readInt("\n>Introduzca un numero: "));
+        for (int i = 0; i < combi.length; i++) {
+
+            numUser = Readers.readInt("\n>Introduzca un numero:");
+            boleto.getCombinacion()[i] = numUser;
+
         }
 
-        return combinacionUsuario += String.valueOf(random(0, 9));
+        //Complementario
+        complementario = Readers.readInt("\n>Introduzca un numero:");
+
+        //El reintegro se creara en el constructor
+        boleto = new Boleto(combi, complementario);
+
+        return boleto;
 
     }
 
