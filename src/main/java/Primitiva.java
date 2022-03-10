@@ -77,7 +77,14 @@ public class Primitiva {
     }
 
     public long jugarHastaCategoriaEspecial() {
+        long intentos = 0;
+        Categoria categoria = null;
 
+        while(categoria != Categoria.ESPECIAL){
+            intentos++;
+            categoria = jugar(new Boleto());
+        }
+        return intentos;
     }
 
 }
