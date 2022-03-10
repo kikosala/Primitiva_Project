@@ -10,10 +10,12 @@ public class Boleto {
     private int complementario;
     private int reintegro;
 
-    public Boleto(int[] combinacion, int complementario, int reintegro) {
+    public Boleto(int[] combinacion, int complementario) {
         this.combinacion = combinacion;
         this.complementario = complementario;
-        this.reintegro = reintegro;
+        reintegro = bomboPequeño.extraerBola();
+        bomboPequeño.reset();
+
     }
     public Boleto(){
         combinacion = generarCombinacion();

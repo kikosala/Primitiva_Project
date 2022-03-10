@@ -77,7 +77,7 @@ public class Primitiva {
     }
 
     public long jugarHastaCategoriaEspecial() {
-        
+
     }
 
 }
