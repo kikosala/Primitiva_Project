@@ -1,32 +1,44 @@
-import libs.Bombo;
-
 public class Primitiva {
     public enum Categoria{
         ESPECIAL, PRIMERA, SEGUNDA, TERCERA, CUARTA, QUINTA
     }
-    private static final int MIN_BOLA_GRANDE = 1, MIN_BOLA_PEQUENYO = 0;
-    private static final int MAX_BOLA_GRANDE = 49, MAX_BOLA_PEQUENYO = 9;
-    private static final int lengthCombinacion = 7;
-    private Bombo bomboGrande;
-    private Bombo bomboPequeño;
-    private String combinacionGanadora;
+
+    private Boleto boletoGanador;
 
     public Primitiva() {
-        bomboGrande = new Bombo(MAX_BOLA_GRANDE, MIN_BOLA_GRANDE);
-        bomboPequeño = new Bombo(MAX_BOLA_PEQUENYO, MIN_BOLA_PEQUENYO);
-        combinacionGanadora = generarCombinacion();
-    }
-    public String generarCombinacion(){
-        StringBuilder combinacion = new StringBuilder();
-        for(int i = 0; i < lengthCombinacion-1; i++){
-            combinacion.append(bomboGrande.extraerBola());
-        }
-        combinacion.append(bomboPequeño.extraerBola());
-        return combinacion.toString();
+        boletoGanador = new Boleto();
     }
 
-    public String getCombinacionGanadora() {
-        return combinacionGanadora;
+    public Categoria comproabarCategoria(Boleto boleto){
+        int aciertos = 0;
+        for(int i = 0; i < boletoGanador.getCombinacion().length; i++){
+            for(int j = 0; j < boleto.getCombinacion().length; j++){
+                if(boletoGanador.getCombinacion()[i] == boleto.getCombinacion()[j]){
+                    aciertos++;
+                }
+            }
+        }
+        switch (aciertos){
+            case 3: return Categoria.QUINTA;
+            case 4: return  Categoria.CUARTA;
+            case 5:
+                if(boleto.getComplementario() == boletoGanador.getComplementario()){
+                    return Categoria.SEGUNDA;
+                }else{
+                    return Categoria.TERCERA;
+                }
+            case 6:
+                if(boleto.getReintegro() == boletoGanador.getReintegro()){
+                    return Categoria.ESPECIAL;
+                }else{
+                    return Categoria.PRIMERA;
+                }
+            default: return null;
+        }
+    }
+
+    public Boleto getBoletoGanador() {
+        return boletoGanador;
     }
 
     public String jugarUnico() {

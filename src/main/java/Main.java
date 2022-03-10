@@ -1,3 +1,5 @@
+import libs.Readers;
+
 import java.util.Scanner;
 
 import static libs.Randoms.random;
@@ -95,8 +97,8 @@ public class Main {
         String combinacionUsuario = "";
 
         for (int i = 0; i < 6; i++) {
-            System.out.println("\n>Introduzca un numero: ");
-            combinacionUsuario += String.valueOf(readInt());
+
+            combinacionUsuario += String.valueOf(Readers.readInt("\n>Introduzca un numero: "));
         }
 
         return combinacionUsuario += String.valueOf(random(0, 9));
@@ -110,9 +112,8 @@ public class Main {
      */
     public static int menu(String texto) {
 
-        System.out.println(texto);
-        return readInt();
 
+        return Readers.readInt(texto);
     }
 
     /**
@@ -127,15 +128,6 @@ public class Main {
             return false;
         return true;
 
-    }
-
-    /**
-     * Lee y devuelve un int
-     * @return
-     */
-    public static int readInt() {
-        Scanner lector = new Scanner(System.in);
-        return Integer.parseInt(lector.nextLine());
     }
 
 }
