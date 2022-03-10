@@ -28,4 +28,25 @@ public class Primitiva {
     public String getCombinacionGanadora() {
         return combinacionGanadora;
     }
+
+    public String jugarUnico() {
+        return null;
+    }
+
+    public String jugarHastaPremio() {
+        return null;
+    }
+
+    public String jugarHastaPremioSinReintegro() {
+        return null;
+    }
+
+    public String cicloDe10000Sorteos() {
+        return null;
+    }
+
+    public String jugarHastaCategoriaEspecial() {
+        return null;
+    }
+
 }
