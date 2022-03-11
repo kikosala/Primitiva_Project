@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Boleto {
 
-    private static final int lengthCombinacion = 6;
+    private  final int lengthCombinacion = 6;
     private static final int MIN_BOLA_GRANDE = 1, MIN_BOLA_PEQUENYO = 0;
     private static final int MAX_BOLA_GRANDE = 49, MAX_BOLA_PEQUENYO = 9;
 
@@ -44,6 +44,10 @@ public class Boleto {
 
         return combinacion;
 
+    }
+
+    public int getLengthCombinacion() {
+        return lengthCombinacion;
     }
 
     public int[] getCombinacion() {
