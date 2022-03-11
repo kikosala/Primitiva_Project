@@ -1,5 +1,6 @@
 import libs.Readers;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static libs.Randoms.random;
@@ -8,20 +9,20 @@ public class Main {
 
     public static Primitiva primitiva = new Primitiva();
 
-    public Main() {
+    public static void main(String args[]) {
 
         //DECLARACIÓN DE VARIABLES
         Boleto boletoUsuario = null;
         int option = 0;
 
         //IMPRIMIMOS EL PROGRAMA
-        System.out.println(">");
+        System.out.println(">JUEGO DE PRIMITIVA");
 
         //ELECCION DE NUMEROS
         do {
             /*Imprimimos el menu y devolvemos la opcion elegida*/
             option = menu("\nPRIMITIVA:" + "\n-" +  "\nElija sus numeros" + "\n1.- MANUALMENTE" +
-                    "\n2.- ALEATORIAMENTE" + "\n-" + "\nSelecciona una opción [0-2]");
+                    "\n2.- ALEATORIAMENTE" + "\n0.- SALIR DEL MENU" + "\n-" + "\nSelecciona una opción [0-2]");
 
             /*Switcheamos la opcion y ejecutará el metodo indicado*/
             switch (option) {
@@ -64,23 +65,33 @@ public class Main {
                     break;
                 case 1:
                     System.out.println("\n>Has elegido JUEGO UNICO.");
-                    System.out.println(primitiva.jugar(boletoUsuario));
+
+                    if (primitiva.jugar(boletoUsuario) == null)
+                        System.out.println(">No te ha tocado!!!");
+                    else
+                        System.out.println(">Te ha tocado " + primitiva.jugar(boletoUsuario));
+
                     break;
                 case 2:
                     System.out.println("\n>Has elegido JUGAR HASTA OBTENER PREMIO:");
-                    System.out.println(primitiva.jugarHastaPremio());
+                    System.out.println(">Te ha tocado " + primitiva.jugarHastaPremio());
                     break;
                 case 3:
                     System.out.println("\n>Has elegido JUGAR HASTA OBTENER PREMIO (SIN REINTEGRO):");
-                    primitiva.jugarHastaPremioSinReintegro();
+                    System.out.println(">Te ha tocado " + primitiva.jugarHastaPremioSinReintegro());
                     break;
                 case 4:
                     System.out.println("\n>Has elegido CICLO DE 10000 SORTEOS:");
-                    primitiva.cicloDe10000Sorteos();
+                    System.out.println(">PRIMERA \t>SEGUNDA \t>TERCERA \t>CUARTA \t>QUINTA \t>REINTEGRO \t>ESPECIAL");
+                    System.out.println(Arrays.toString(primitiva.cicloDe10000Sorteos()));
                     break;
                 case 5:
                     System.out.println("\n>Has elegido JUGAR HASTA OBTENER PREMIO CATEGORIA ESPECIAL:");
-                    primitiva.jugarHastaCategoriaEspecial();
+
+                    System.out.println("\n>Boleto ganador:");
+                    System.out.println(primitiva.getBoletoGanador().toString());
+                    System.out.println("\n>Intentos hasta conseguir la categoria especial:");
+                    System.out.println(primitiva.jugarHastaCategoriaEspecial());
                     break;
                 case 0:
                     System.out.println("\n¡Hasta la proxima!");

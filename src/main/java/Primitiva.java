@@ -1,4 +1,5 @@
 public class Primitiva {
+
     public enum Categoria{
         PRIMERA, SEGUNDA, TERCERA, CUARTA, QUINTA, REINTEGRO, ESPECIAL
     }
@@ -10,7 +11,9 @@ public class Primitiva {
     }
 
     public Categoria jugar(Boleto boleto){
+
         int aciertos = 0;
+
         for(int i = 0; i < boletoGanador.getCombinacion().length; i++){
             for(int j = 0; j < boleto.getCombinacion().length; j++){
                 if(boletoGanador.getCombinacion()[i] == boleto.getCombinacion()[j]){
@@ -18,7 +21,9 @@ public class Primitiva {
                 }
             }
         }
+
         switch (aciertos){
+
             case 3: return Categoria.QUINTA;
             case 4: return  Categoria.CUARTA;
             case 5:
@@ -38,6 +43,7 @@ public class Primitiva {
             }
         }
         return null;
+
     }
 
     public Boleto getBoletoGanador() {
@@ -62,15 +68,21 @@ public class Primitiva {
     public int[] cicloDe10000Sorteos() {
         final int limite = 10000;
         int[] resultado = new int[Categoria.values().length];
+
+        Categoria categoria = null;
+
         for(int i = 0; i < limite; i++){
-            switch(jugar(new Boleto())){
-                case PRIMERA -> resultado[0] += 1;
-                case SEGUNDA -> resultado[1] += 1;
-                case TERCERA -> resultado[2] += 1;
-                case CUARTA -> resultado[3] += 1;
-                case QUINTA -> resultado[4] += 1;
-                case REINTEGRO -> resultado[5] += 1;
-                case ESPECIAL -> resultado[6] += 1;
+            categoria = jugar(new Boleto());
+            if (categoria != null) {
+                switch (categoria) {
+                    case PRIMERA -> resultado[0] += 1;
+                    case SEGUNDA -> resultado[1] += 1;
+                    case TERCERA -> resultado[2] += 1;
+                    case CUARTA -> resultado[3] += 1;
+                    case QUINTA -> resultado[4] += 1;
+                    case REINTEGRO -> resultado[5] += 1;
+                    case ESPECIAL -> resultado[6] += 1;
+                }
             }
         }
         return resultado;
