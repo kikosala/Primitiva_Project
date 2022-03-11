@@ -111,13 +111,13 @@ public class Main {
 
         Boleto boleto = null;
 
-        int[] combi = new int[boleto.getLengthCombinacion()];
+        int[] combi = new int[6];
         int numUser, complementario, reintegro;
 
         for (int i = 0; i < combi.length; i++) {
 
             numUser = Readers.readInt("\n>Introduzca un numero:");
-            boleto.getCombinacion()[i] = numUser;
+            combi[i] = numUser;
 
         }
 
