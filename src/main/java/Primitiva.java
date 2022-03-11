@@ -10,6 +10,12 @@ public class Primitiva {
         boletoGanador = new Boleto();
     }
 
+    /**
+     * jugar()
+     * Devuelve la categoria dependiendo de los aciertos del boleto.
+     * @param boleto
+     * @return
+     */
     public Categoria jugar(Boleto boleto){
 
         int aciertos = 0;
@@ -50,6 +56,11 @@ public class Primitiva {
         return boletoGanador;
     }
 
+    /**
+     * jugarHastaPremio()
+     * Devuelve la primera categoria conseguida del boleto del usuario.
+     * @return
+     */
     public Categoria jugarHastaPremio() {
         Categoria categoria = null;
         while(categoria == null){
@@ -57,6 +68,12 @@ public class Primitiva {
         }
         return categoria;
     }
+
+    /**
+     * jugarHastaPremioSinReintegro()
+     * Devuelve la primera categoria conseguida del boleto del usuario - sin reintegro
+     * @return
+     */
     public Categoria jugarHastaPremioSinReintegro() {
         Categoria categoria = null;
         while(categoria == null || categoria.equals(Categoria.REINTEGRO)){
@@ -65,6 +82,11 @@ public class Primitiva {
         return categoria;
     }
 
+    /**
+     * cicloDe10000Sorteos()
+     * Devuelve la cantidad de veces que se ha obtenido el premio de cada categoria.
+     * @return
+     */
     public int[] cicloDe10000Sorteos() {
         final int limite = 10000;
         int[] resultado = new int[Categoria.values().length];
@@ -88,6 +110,11 @@ public class Primitiva {
         return resultado;
     }
 
+    /**
+     * jugarHastaCategoriaEspecial()
+     * Devuelve el nro. de intentos que ha llevado conseguir el boleto ganador.
+     * @return
+     */
     public long jugarHastaCategoriaEspecial() {
         long intentos = 0;
         Categoria categoria = null;

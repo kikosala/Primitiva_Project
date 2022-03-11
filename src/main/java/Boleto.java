@@ -46,6 +46,7 @@ public class Boleto {
 
     }
 
+    //Getters
     public int getLengthCombinacion() {
         return lengthCombinacion;
     }

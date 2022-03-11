@@ -112,7 +112,7 @@ public class Main {
         Boleto boleto = null;
 
         int[] combi = new int[6];
-        int numUser, complementario, reintegro;
+        int numUser, complementario;
 
         for (int i = 0; i < combi.length; i++) {
 
